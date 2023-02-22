@@ -48,8 +48,8 @@ class ViterbiAlgorithm:
 
             # Update best path
             for hidden_state in range(len(self.hmm_object.hidden_states)):
-            
-            # Set best hidden state sequence in the best_path np.ndarray THEN copy the best_path to path
+                pass
+                # Set best hidden state sequence in the best_path np.ndarray THEN copy the best_path to path
 
             path = best_path.copy()
 

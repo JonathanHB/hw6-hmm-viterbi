@@ -8,7 +8,7 @@ dynamic=["version"]
 
 [project]
 name = "models"
-authors = [{name = "Andrew Blair", email = "andrew.blair@ucsf.edu"}]
+authors = [{name = "Jonathan Borowsky", email = "jonathan.borowsky@ucsf.edu"}]
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
@@ -18,4 +18,4 @@ dependencies = ["pytest", "numpy", "scipy", "matplotlib", "scikit-learn", "sphin
 source = ["src"] # parent directory of package
 
 [project.urls]
-Home = "https://github.com/bmi203-2023/hw6-hmm-viterbi"
+Home = "https://github.com/JonathanHB/hw6-hmm-viterbi"
