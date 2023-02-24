@@ -7,8 +7,9 @@ Description:
 """
 import pytest
 import numpy as np
-from models.hmm import HiddenMarkovModel
-from models.decoders import ViterbiAlgorithm
+import src
+from src.models.hmm import HiddenMarkovModel
+from src.models.decoders import ViterbiAlgorithm
 
 
 def test_use_case_lecture():
@@ -59,7 +60,7 @@ def test_user_case_one():
     hidden_states = ['no-traffic','traffic']
 
     # PONDERING QUESTION: How would a user define/compute their own HMM instantiation inputs to decode the hidden states for their use case observations?
-    use_case_one_data = np.load('./data/UserCase-One.npz')
+    use_case_one_data = np.load('../data/UserCase-One.npz')
 
     # Instantiate submodule class models.HiddenMarkovModel with
     # observation and hidden states and prior, transition, and emission probabilities.

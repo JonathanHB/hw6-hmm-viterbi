@@ -7,8 +7,9 @@ Description:
 """
 import pytest
 import numpy as np
-from models.hmm import HiddenMarkovModel
-from models.decoders import ViterbiAlgorithm
+import src
+from src.models.hmm import HiddenMarkovModel
+from src.models.decoders import ViterbiAlgorithm
 
 def test_deliverable():
     """_summary_

@@ -15,13 +15,13 @@ class HiddenMarkovModel:
         """             
         self.observation_states = observation_states
         self.observation_states_dict = {observation_state: observation_state_index \
-                                  for observation_state_index, observation_state in enumerate(list(self.observation_states))}
+                                   for observation_state_index, observation_state in enumerate(list(self.observation_states))}
 
         self.hidden_states = hidden_states
         self.hidden_states_dict = {hidden_state_index: hidden_state \
                                    for hidden_state_index, hidden_state in enumerate(list(self.hidden_states))}
         
 
-        self.prior_probabilities= prior_probabilities
+        self.prior_probabilities = prior_probabilities
         self.transition_probabilities = transition_probabilities
         self.emission_probabilities = emission_probabilities
