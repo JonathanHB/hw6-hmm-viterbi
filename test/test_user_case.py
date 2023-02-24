@@ -5,13 +5,11 @@ Date:
 Program: 
 Description:
 """
-import pytest
 import numpy as np
-import src
-from src.models.hmm import HiddenMarkovModel
-from src.models.decoders import ViterbiAlgorithm
+from src.hmm import HiddenMarkovModel
+from src.decoders import ViterbiAlgorithm
 
-pathprefix="."
+pathprefix=""
 
 def test_use_case_lecture():
     """a test case based on a relationship between funding sources and student commitment to their rotation lab

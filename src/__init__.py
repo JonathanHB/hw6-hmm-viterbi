@@ -6,6 +6,6 @@ Package:
 Description: 
 """
 import numpy as np
-#from .hmm import *
+from .hmm import *
 
 __version__ = '0.1.0'

@@ -6,16 +6,15 @@ Program: BMI/biophysics
 Description: hidden markov models/viterbi algorithm homework
 """
 
-import pytest
 import numpy as np
-import src
-from src.models.hmm import HiddenMarkovModel
-from src.models.decoders import ViterbiAlgorithm
+import src.hmm
+from src.hmm import HiddenMarkovModel
+from src.decoders import ViterbiAlgorithm
 
-pathprefix="."
+pathprefix=""
 
 def test_deliverable():
-    """_summary_
+    """compare implementations
     """
     # index annotation observation_states=[i,j] 
     observation_states = ['regulatory', 'regulatory-potential'] # observed regulatory activity in the TBX5 TAD of cardiomyocytes
