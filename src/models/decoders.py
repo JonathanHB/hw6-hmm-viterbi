@@ -3,26 +3,44 @@ import numpy as np
 from src.models.hmm import HiddenMarkovModel # for testing
 
 class ViterbiAlgorithm:
-    """_summary_
+    """
+        an object that stores hidden markov model parameters and can decode the most likely path through the hmm hidden
+        states given a series of observation states
     """    
 
     def __init__(self, hmm_object):
-        """_summary_
+        """
+        create an instance of ViterbiAlgorithm using the parameters of a hidden markov model (see below)
 
         Args:
-            hmm_object (_type_): _description_
+            hmm_object (_type_): the hidden markov model parameters:
+                - lists of observed and hidden states and dictionaries mapping those states to indices in the transition
+                    and emission matrices
+                - prior probabilities of each hidden state
+                - transition matrix describing hidden state transition probabilities
+                - emission matrix describing the probability of observing each observable state given that the system
+                    is in any given hidden state
         """              
         self.hmm_object = hmm_object
 
     def best_hidden_state_sequence(self, decode_observation_states: np.ndarray) -> np.ndarray:
 
-        """_summary_
+        """
+        Calculate the most likely path through the hmm hidden states given a series of observation states using the
+        Viterbi algorithm. For each observation in a series thereof, the Viterbi algorithm calculates the relative
+        probability that system was in each hidden state using the hidden state probabilities at the previous timestep
+        and the transition and emission probabilities. It also calculates the previous state from which the system would
+        most likely have reached each current state. The most likely path is reconstructed by following the series of
+        transitions backwards from the highest-probability final state.
 
         Args:
-            decode_observation_states (np.ndarray): _description_
+            decode_observation_states (np.ndarray): a list of the observations of the system in the order that they were
+                observed
 
         Returns:
-            np.ndarray: _description_
+            np.ndarray: the most likely series of hidden states that the system traversed to produce the observed
+                observation states. There is a 1:1 correspondence between the states in the input observation state
+                trajectory and the output hidden state trajectory.
         """
 
         #define number of observations t and number of hidden states k
@@ -82,7 +100,7 @@ class ViterbiAlgorithm:
         #convert from state indices to state names
         best_hidden_state_path = [self.hmm_object.hidden_states[int(i)] for i in best_hidden_state_path_inds]
 
-        #output
+        #debugging output
         print("------------------------------------")
         print("observations:")
         print([self.hmm_object.observation_states_dict[obs] for obs in decode_observation_states])
@@ -100,7 +118,7 @@ class ViterbiAlgorithm:
         return best_hidden_state_path
 
 
-#copied from unit tests
+#copied from unit tests; now unused
 def use_case_lecture():
     """_summary_
     """
@@ -136,7 +154,7 @@ def use_case_lecture():
                        use_case_one_hmm.transition_probabilities)
     assert np.allclose(use_case_one_viterbi.hmm_object.emission_probabilities, use_case_one_hmm.emission_probabilities)
     #
-    # # TODO: Check HMM dimensions and ViterbiAlgorithm
+    # #Check HMM dimensions and ViterbiAlgorithm
     #
     # # Find the best hidden state path for our observation states
     use_case_decoded_hidden_states = use_case_one_viterbi.best_hidden_state_sequence(
