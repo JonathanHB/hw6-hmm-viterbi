@@ -13,7 +13,7 @@ from src.models.decoders import ViterbiAlgorithm
 
 
 def test_use_case_lecture():
-    """_summary_
+    """a test case based on a relationship between funding sources and student commitment to their rotation lab
     """
     # index annotation observation_states=[i,j]    
     observation_states = ['committed','ambivalent'] # A graduate student's dedication to their rotation lab
@@ -52,7 +52,7 @@ def test_use_case_lecture():
 
 
 def test_user_case_one():
-    """_summary_
+    """a test case based on a relationship between traffic conditions and arrival time
     """
     # index annotation observation_states=[i,j]    
     observation_states = ['on-time','late'] 

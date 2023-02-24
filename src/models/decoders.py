@@ -42,6 +42,8 @@ class ViterbiAlgorithm:
                 observation states. There is a 1:1 correspondence between the states in the input observation state
                 trajectory and the output hidden state trajectory.
         """
+        #---------------------------------------------
+        #initialize variables
 
         #define number of observations t and number of hidden states k
         t = len(decode_observation_states) #indexed i
@@ -59,8 +61,9 @@ class ViterbiAlgorithm:
         path_prob[0,:] = [self.hmm_object.prior_probabilities[hidden_state_index]*self.hmm_object.emission_probabilities[hidden_state_index, self.hmm_object.observation_states_dict[decode_observation_states[0]]]
                           for hidden_state_index in range(m)]
 
-
-        #fill in subsequent rows to describe different paths through hmm state space and their relative probabilities
+        #---------------------------------------------
+        #fill in subsequent rows of the path and path_prob matrices to describe different paths through hmm state space
+        # and their relative probabilities
 
         #for each frame of the trajectory
         for ii, obs in enumerate(decode_observation_states[1:]):
@@ -86,8 +89,9 @@ class ViterbiAlgorithm:
                 # it is used later to determine the most likely path
                 path[i, hsi_curr] = np.argmax(relative_last_state_probabilities)
 
+        #---------------------------------------------
+        #find the most likely hidden state path by following the path matrix backwards from the most likely final state
 
-        #find the most likely path given the observations (= trajectory)
         best_hidden_state_path_inds = np.zeros(t)
         best_hidden_state_path_inds[t-1] = np.argmax(path_prob[t-1])
 
